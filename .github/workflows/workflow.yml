@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Lint code
+      run: |
+        echo "Linting code..."
+        # You can use a linter here like flake8 for Python
+        flake8 .
+
+    - name: Run tests
+      run: |
+        echo "Running tests..."
+        # If you're using nose tests
+        nosetests
